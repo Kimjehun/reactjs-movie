@@ -8,25 +8,19 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
-        
-        let counter = 0;
-
-        function countUp() {
-            counter = counter+1;
-            render();
-        }
         function render() {
-            ReactDOM.render(<Container />, root);
+            ReactDOM.render(<App />, root);
         }
         // 컴포넌트의 첫 문자는 무조건 대문자여야 한다.
         // 그래야 JSX에서 해당 컴포넌트를 컴포넌트로 인식하고 해석할 수 있다.
         // 소문자로 하게 되면 일반 html 태그로 인식하게 된다.
-        const Container = () => (
-            <div>
-                <h3>Total clicks : {counter}</h3>
-                <button onClick={countUp}>Click me</button>
-            </div>
-        );
+        const App = () => {
+            const [counter, modifier] = React.useState();
+            return (<div>
+                <h3>Total clicks : 0</h3>
+                <button>Click me</button>
+            </div>);
+        };
         render();
     </script>
 </html>
